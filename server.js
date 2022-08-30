@@ -1,22 +1,19 @@
+const express = require('express')
+const app = express()
+const isPalindrome = require('./isPalindrome.js')
+const port = 5000
 
-const express = require('express');
-const app = express();
-const port = 5000;
-const helloWorld = require('./helloWorld.js');
-const fs = require('fs');
+app.get('/Palindrome/:string', (req, res) => {
+  res.status(200).send(isPalindrome.checkPalindrome(req.params.string))
+})
 
-app.get('/', function (req, res) {
-  fs.readFile('index.html', function (err, data) {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write(data);
-    res.end();
-  });
+app.listen(port, () => {
+  console.log(`Our app listening on port ${port}`)
 })
 
 app.get('/helloWorld', function (req, res) {
-  res.status(200).send(helloWorld.helloWroldFunc());
+  res.send('Hello World');
 })
-
 
 
 exports.stop = function () {
