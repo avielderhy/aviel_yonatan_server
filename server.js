@@ -13,7 +13,7 @@ app.get('/helloWorld', function (req, res) {
 })
 
 app.get('/isPalindrome/:string', (req, res) => {
-  res.status(200).send(isPalindrome.checkPalindrome((req.params.string)))
+  res.status(200).send(isPalindrome.checkPalindrome(req.params.string))
 })
 
 exports.stop = function () {
